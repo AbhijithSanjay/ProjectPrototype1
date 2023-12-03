@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health Tracker</title>
+  <link rel="icon" type="image/jpg" href="ebrace2.0-removebg-preview.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="surveyContainer">
+    <h1>PTSD survey</h1>
+    <form id="anxietysurvey">
+      <label>1. How often have you had nightmares about the event or thought about the event when you did not want to?</label>
+      <br>
+      <br>
+
+      <select id="q1">
+        <option value="0">Not at all</option>
+        <option value="1">Several days</option>
+        <option value="2">More than half the days</option>
+        <option value="3">Nearly every day</option>
+      </select>
+    <br>
+    <br>
+    <br>
+     
+      <label>2. How often have you tried hard not to think about the event or went out of your way to avoid situations that reminded you of the event?</label>
+      <br>
+      <br>
+      <select id="q2">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <br>
+
+      <label>3. How often have you tried hard not to think about the event or went out of your way to avoid situations that reminded you of the event?</label>
+      <br>
+      <br>
+      <select id="q3">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <br>
+  
+  
+      <label>4. How often have you tried hard not to think about the event or went out of your way to avoid situations that reminded you of the event?</label>
+      <br>
+      <br>
+      <select id="q4">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <br>
+  
+      <label>5. How often have you been felt guilty or unable to stop blaming yourself or others for the event or any problems the event may have caused?</label>
+      <br>
+      <br>
+      <select id="q5">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <button type="button" onclick="calculateResults()">Submit</button>
+    </form>
+  </div>
+
+  <div class="container" id="resultsContainer" style="display: none;">
+    <h2>Survey Results</h2>
+    <p>Your total score is: <span id="totalScore"></span></p>
+    <p id="resultStatement"></p>
+  </div>
+
+  <script>
+    function calculateResults() {
+      var q1 = parseInt(document.getElementById("q1").value);
+      var q2 = parseInt(document.getElementById("q2").value);
+      var q3 = parseInt(document.getElementById("q3").value);
+      var q4 = parseInt(document.getElementById("q4").value);
+      var q5 = parseInt(document.getElementById("q5").value);
+      var totalScore = q1 + q2 + q3 + q4 + q5;
+
+      document.getElementById("surveyContainer").style.display = "none";
+      document.getElementById("resultsContainer").style.display = "block";
+      document.getElementById("totalScore").innerText = totalScore;
+
+      var resultStatement = '';
+      if (totalScore <= 5) {
+        resultStatement = "You seem to be doing well!";
+      } else if (totalScore <= 10) {
+        resultStatement = "You might want to consider some stress-relief techniques.";
+      } else {
+        resultStatement = "Consider seeking professional help to manage stress and sleep issues.";
+      }
+      document.getElementById("resultStatement").innerText = resultStatement;
+    }
+  </script>
+</body>
+</html>
